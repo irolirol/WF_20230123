@@ -1,0 +1,1280 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on ¬P´Á¥|, ¤G¤ë 09, 2023, 5:36 ¤U¤È -->
+<!-- MuClient version 5.06 -->
+<!-- Written by Nick Gammon -->
+<!-- Home Page: http://www.mushclient.com/ -->
+<muclient>
+<world
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+
+   auto_say_override_prefix="-"
+   auto_say_string="say "
+   chat_name="Name-not-set"
+   command_stack_character=";"
+   id="d415aacab6a8cf3e234450af"
+   input_font_name="Fixedsys"
+   mapping_failure="Alas, you cannot go that way."
+   name="SK30"
+   new_activity_sound="(No sound)"
+   output_font_name="FixedSys"
+   password_base64="y"
+   password="aXJvbGluZw=="
+   player="irolmc"
+   proxy_server="103.230.230.126"
+   script_editor="notepad"
+   script_editor_argument="%file"
+   script_filename="C:\Program Files (x86)\MUSHclient\scripts\WAR_JANPAN_UP.lua"
+   script_language="Lua"
+   site="210.59.236.38"
+   spam_message="look"
+   speed_walk_prefix="#"
+   terminal_identification="mushclient"
+
+   arrows_change_history="y"
+   auto_pause="y"
+   auto_repeat="y"
+   auto_resize_minimum_lines="1"
+   auto_resize_maximum_lines="20"
+   chat_foreground_colour="red"
+   chat_background_colour="black"
+   chat_port="4050"
+   confirm_before_replacing_typing="y"
+   confirm_on_paste="y"
+   confirm_on_send="y"
+   default_trigger_sequence="100"
+   default_alias_sequence="100"
+   detect_pueblo="y"
+   display_my_input="y"
+   echo_hyperlink_in_output_window="y"
+   edit_script_with_notepad="y"
+   enable_aliases="y"
+   enable_beeps="y"
+   enable_command_stack="y"
+   enable_scripts="y"
+   enable_speed_walk="y"
+   enable_timers="y"
+   enable_triggers="y"
+   fade_output_opacity_percent="20"
+   fade_output_seconds="8"
+   history_lines="1000"
+   hyperlink_adds_to_command_history="y"
+   hyperlink_colour="#0080FF"
+   indent_paras="y"
+   input_background_colour="white"
+   input_font_height="9"
+   input_font_weight="400"
+   input_text_colour="black"
+   keypad_enable="y"
+   line_information="y"
+   log_output="y"
+   max_output_lines="5000"
+   mud_can_change_link_colour="y"
+   mud_can_change_options="y"
+   note_text_colour="#040000"
+   output_font_height="9"
+   output_font_weight="400"
+   paste_delay_per_lines="1"
+   pixel_offset="1"
+   port="7788"
+   proxy_port="5678"
+   send_file_delay_per_lines="1"
+   send_mxp_afk_response="y"
+   show_connect_disconnect="y"
+   show_italic="y"
+   show_underline="y"
+   spam_line_count="20"
+   tab_completion_lines="200"
+   timestamp_input_text_colour="maroon"
+   timestamp_notes_text_colour="blue"
+   timestamp_output_text_colour="white"
+   timestamp_input_back_colour="black"
+   timestamp_notes_back_colour="black"
+   timestamp_output_back_colour="black"
+   tool_tip_visible_time="5000"
+   tool_tip_start_time="400"
+   underline_hyperlinks="y"
+   unpause_on_send="y"
+   use_custom_link_colour="y"
+   use_default_input_font="y"
+   use_default_output_font="y"
+   warn_if_scripting_inactive="y"
+   wrap="y"
+   wrap_column="80"
+   write_world_name_to_log="y"
+   > <!-- end of general world attributes -->
+  <connect_text>y</connect_text>
+
+</world>
+
+<!-- triggers -->
+
+<triggers
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*®ð*(*%)*"
+   send_to="12"
+   sequence="80"
+  >
+  <send>iHP = %3
+print ("®ð¤W­­:"..iHP)
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*¯«*(*%)*"
+   send_to="12"
+   sequence="80"
+  >
+  <send>iSpell = %3
+print ("¯«¤W­­:"..iSpell)
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*ºë*(*%)*"
+   send_to="12"
+   sequence="80"
+  >
+  <send>iMagic = %3
+print ("ºë¤W­­:"..iMagic)
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="Player"
+   match="*(*)*ÃM¦b*¤W*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>strPlayer = "%2"
+print ("DEBUG_Player:"..strPlayer)
+
+
+require "wait"
+wait.make (function ()
+
+--¶Â¦W³æ
+if string.find(strPlayer, "Prince") or string.find(strPlayer, "Transkungfu") then
+  SetVariable ("VOCCPY", "0")
+  return
+end
+
+
+SetVariable ("VOCCPY", "1") 
+
+end)</send>
+  </trigger>
+  <trigger
+   match="*(force)*/*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>strLv = "%2"
+strLvExp = "%3"
+iLvExp = tonumber(strLvExp)
+iLv = tonumber(string.sub(strLv, -5))
+iLv = iLv +1
+iMaxExp = iLv * iLv
+i = 7
+
+require "wait"
+wait.make (function ()
+
+  print("MAXLV:"..iLv)
+  print("MAXEXP:"..iMaxExp)
+  print("NOWEXP:"..iLvExp)
+
+  if iLvExp &gt; iMaxExp then
+   Execute("move 5;learn force from putimama for 1")
+   wait.time(i)
+  end
+  Execute("exa;exert force")
+end) </send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*[´À¨­:*]* "
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("VDOLL", "%2")
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*clearall*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>iDieFlag = 0
+SP_FLAG = 0
+iRunFlag = 0
+strSICK = "¥¿±`"</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*¤µ¤é´NÅý¤T³~§PÅã¥Ü¤@¤U¹ê¤O§a*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DeleteTemporaryTimers ()
+Execute("move 1")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="EXP"
+   match="*¦]¬°*±þ¦º¤F*±o¨ì¤F*ÂI¸gÅç­È©M*ÂI¼ç¯à¥H¤Î*ÂIÁn±æ*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimer("PER_BLADE", false)
+SetVariable ("EXP_STUDY", string.gsub(%5,'%s+',''))
+iStudy = GetVariable("EXP_STUDY")
+strStatus = GetVariable("VSTATUS")
+
+i = 7
+
+print ("DEBUG_Status:"..strStatus)
+if strStatus == "MASTER" then
+  return
+end
+
+
+print ("DEBUG_iDieFlag:"..iDieFlag)
+if iDieFlag == 1 then
+  return
+end
+iDieFlag = 1
+
+
+require "wait"
+wait.make (function ()
+
+ strMe = "%2"
+ print ("DEBUG_WHO_KILL:"..strMe)
+ 
+ if strMe == "©p" or strMe == "§A" then
+  wait.time(i) 
+  Execute("sac all;hp;exa")
+  
+  if iExp &gt;= 140 then
+
+    wait.time(i) 
+    Execute("rem 4;w;e;s;n;move 5;hp") 
+    wait.time(3) 
+
+   if iMagic &lt; 80 or iSpell &lt; 80 or iHP &lt; 80 then
+     wait.time(i)
+     Execute("heal me")
+     wait.time(50)
+   end
+
+   for iloop = 3,1,-1 do
+     wait.time(i) 
+     Execute("ln dodge;exa;ex1;ex2;ex;ex2")
+     wait.time(i) 
+     Execute("ln parry;exa;ex1;ex2;ex;ex2")
+     wait.time(i) 
+     Execute("ln unarmed;exa;ex1;ex2;ex;ex2")
+     wait.time(i) 
+     Execute("ln parry;exa;ex1;ex2;ex;ex2")
+     wait.time(i) 
+     Execute("ln dodge;exa;ex1;ex2;ex;ex2")
+     wait.time(i) 
+     Execute("ln dragonforce;exa;ex1;ex2;ex;ex2")
+   end 
+
+   --[[
+   for iloop = 10,1,-1 do
+     wait.time(i) 
+     Execute("ln force;exa;ex;ex2;ex;ex2")
+     wait.time(7) 
+     Execute("ln sunzi-force;exa;ex;ex2;ex;ex2")
+     wait.time(7) 
+     Execute("ln unarmed;exa;ex;ex2;ex;ex2")
+     wait.time(7) 
+     Execute("ln parry;exa;ex;ex2;ex;ex2")
+     wait.time(7) 
+     Execute("ln dodge;exa;ex;ex2;ex;ex2")
+     wait.time(7) 
+     Execute("ln wudon;exa;ex;ex2;ex;ex2")
+     wait.time(7) 
+     Execute("ln tenshi;exa;ex;ex2;ex;ex2")
+   end 
+   --]]
+
+   wait.time(i) 
+   SetVariable ("VOCCPY", "0") 
+   Execute("move 4")
+
+    wait.time(i)
+    Execute("exx;exx")
+
+    wait.time(i)
+    Execute("p2 1;exa")
+
+    wait.time(i)
+    Execute("stare")
+
+  else
+   KILL_MOB()
+  end
+
+ else
+  --GO_MOB()
+  KILL_MOB()
+ end
+ iDieFlag = 0
+end) 
+
+
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="EXP"
+   match="*¦]¬°*±þ¦º¤F*±o¨ì¤F*ÂIÁn±æ*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimer("PER_BLADE", false)
+KILL_MOB()</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*§A¥Î¤@ºØ«Ü©_©Çªº²´¯«ºË¨ÓºË¥h*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>require "wait"
+wait.make (function ()
+
+ SetVariable ("VOCCPY", "0")
+ Execute("look")
+ wait.time(1)
+ strOpy = GetVariable("VOCCPY")
+
+ print("DEBUG_OPY:"..tostring(strOpy))
+ if strOpy == "1" then
+  GO_MOB()
+ else
+  KILL_MOB()
+ end
+
+end)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="MASTER"
+   match="*§A­n©¹­þ­Ó¤è¦V¨«*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimer("PER_BLADE", false)
+EnableTimer("Force", false)
+SetVariable ("VOCCPY", "0")
+SetVariable ("IS_ACT_EXP", "")
+SetVariable ("VPATH", "0")
+SetVariable ("VLOCK", "")
+SetVariable ("VRUN_OUT", "")
+SetVariable ("VGOMOB_LOCK", "")
+SetVariable ("VKILL_LOCK", "")
+SetVariable ("VMOB_NAME", "")
+iDieFlag = 0
+DeleteTemporaryTimers ()
+EnableTriggerGroup("MOB_DIE", true)
+SetVariable ("VSTATUS", "MOB")
+
+
+require "wait"
+wait.make (function ()
+
+ wait.time(5)
+ Execute("stop;exa")
+ wait.time(5)
+ GO_MOB()
+
+end)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="MASTER"
+   match="*§A­n¹ï½Ö¦Õ»y*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>i = 7
+require "wait"
+wait.make (function ()
+ 
+ SetVariable ("VOCCPY", "0")  
+ wait.time(3)
+ Execute("pd;exa;exx")
+ wait.time(i)
+ Execute("e;n;e;bath;ladle;sac all")
+ wait.time(i)
+ Execute("w;n;n;n;w;n;deposit 10000 coin")
+ wait.time(10)
+ Execute("go")      
+
+
+end)</send>
+  </trigger>
+  <trigger
+   match="*¨S¦³¾Ç¨ì¥ô¦óªF¦è*"
+   sequence="100"
+  >
+  <send>drop book</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*©p¥Î¤@ºØ«Ü©_©Çªº²´¯«ºË¨ÓºË¥h*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>require "wait"
+wait.make (function ()
+
+ SetVariable ("VOCCPY", "0")
+ Execute("look")
+ wait.time(1)
+ strOpy = GetVariable("VOCCPY")
+
+ print("DEBUG_OPY:"..tostring(strOpy))
+ if strOpy == "1" then
+  GO_MOB()
+ else
+  KILL_MOB()
+ end
+
+end)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="HOME"
+   match="*¬K­·¼Ó¤G¼Ó*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DeleteTemporaryTimers ()
+SetVariable ("VOCCPY", "0")
+SetVariable ("IS_ACT_EXP", "")
+SetVariable ("VPATH", "0")
+SetVariable ("VLOCK", "")
+SetVariable ("VSTATUS", "MASTER")
+EnableTimer("PER_BLADE", false)
+iDieFlag = 0
+iRunFlag = 0
+Execute("save")
+Execute("move 5;sc")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   match="*¬Ý¨Ó¸Ó§ä¾÷·|°k¶]¤F*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>i = 7
+SetVariable ("VSTATUS", "MOB")
+SetVariable ("VOCCPY", "0")
+EnableTimer("Force", false)
+EnableTimer("PER_BLADE", false)
+
+
+print ("DEBUG_iRunFlag:"..iRunFlag)
+if iRunFlag == 1 then
+  return
+end
+iRunFlag = 1
+
+require "wait"
+wait.make (function ()
+  wait.time(5)
+  Execute("w;n;s;e;w;move 1")
+  iRunFlag = 0
+end)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="Login"
+   match="*­«·s³s½u§¹²¦*"
+   send_to="10"
+   sequence="100"
+  >
+  <send>exa;move 1</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*±þ    ®ð¡R*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("VKill", %2)
+iKill = tonumber(GetVariable("VKill"))
+
+print ("©Ñ®ð:"..iKill)
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="NOBODY"
+   match="*³o¸Ì¨S¦³³o­Ó¤H*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>strStatus = GetVariable("VSTATUS")
+EnableTimer("PER_BLADE", false)
+
+if strStatus == "MASTER" then
+  return
+end
+
+print ("DEBUG_iDieFlag:"..iDieFlag)
+if iDieFlag == 1 then
+  return
+end
+iDieFlag = 1
+
+print("TR:³o¸Ì¨S¦³³o­Ó¤H")
+i = 5
+require "wait"
+wait.make (function ()
+ --Execute("p1 1;exa")
+ --wait.time(3)
+ GO_MOB()
+ iDieFlag = 0
+end)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*¹ê¾Ô¸gÅç: *"
+   send_to="12"
+   sequence="100"
+  >
+  <send>iCExp = %2
+print ("¹ê¾Ô¸gÅç:"..iCExp)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SP"
+   match="*»â±Ð*ªº°ª©Û*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimer("PER_BLADE", true)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*¼ç    ¯à: *"
+   send_to="12"
+   sequence="100"
+  >
+  <send>iExp = %2
+print ("¾Ç²ßÂI¼Æ:"..iExp)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="Login"
+   match="*½Ð¥Î help rules ¬d¸ß¹CÀ¸³W«h*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>i = 7
+DeleteTemporaryTimers ()
+require "wait"
+wait.make (function ()
+ 
+ wait.time(i)
+ Execute("wear all;sec all")
+ wait.time(i)
+ Execute("move 1")
+
+end)</send>
+  </trigger>
+  <trigger
+   group="HOME"
+   match="*Àsªù¥¬§i(Board)*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SetVariable ("VOCCPY", "0")
+SetVariable ("IS_ACT_EXP", "")
+SetVariable ("VPATH", "0")
+SetVariable ("VLOCK", "")
+Execute("save")
+Execute("sc")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="DIE"
+   match="*Â÷»ð¬°§AÄë¬¹¤F¦Û¤v*"
+   send_to="10"
+   sequence="100"
+  >
+  <send>quit</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SP"
+   match="§A*§ðÀ»¥¢»~*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTimer("PER_BLADE", true)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SP"
+   match="§A¹ïµÛ*³Ü¹D*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>strMobName = ""
+EnableTimer("PER_BLADE", true)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*ª¬    ºA: *"
+   send_to="12"
+   sequence="101"
+  >
+  <send>strSICK = ""
+strSICK = "%2"
+print ("ª¬ºA:"..strSICK)
+
+  
+
+
+
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="SC"
+   match="*¼ç    ¯à¡R * (*%)*"
+   send_to="12"
+   sequence="101"
+  >
+  <send>iExp = %2
+print ("¾Ç²ßÂI¼Æ:"..iExp)
+
+if iExp &gt; 140 then
+  Execute("wh learn")
+else
+  Execute("wh exp")
+end
+
+  
+
+
+
+</send>
+  </trigger>
+</triggers>
+
+<!-- aliases -->
+
+<aliases
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+  <alias
+   match="!wf"
+   enabled="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>wield fist;wield fist 2;wear all</send>
+  </alias>
+  <alias
+   match="SYS_LEARN_ALL"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>i = 6
+require "wait"
+wait.make (function ()
+
+    wait.time(i) 
+    Execute("ln dodge;exa;ex;ex2;ex;ex2;hp")
+
+    wait.time(i) 
+    Execute("ln sunzi-force;exa;ex;ex2;ex;ex2;hp")
+
+
+    wait.time(i)
+    Execute("ln sword;exa;ex;ex2;ex;ex2;hp")
+
+
+    wait.time(i)
+    Execute("ln wudon;exa;ex;ex2;ex;ex2;hp")
+
+end)    </send>
+  </alias>
+  <alias
+   match="alds"
+   enabled="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>enable dodge wudon-steps;enable move wudon-steps;enable unarmed taichi;enable parry taichi</send>
+  </alias>
+  <alias
+   match="ap1"
+   enabled="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>apprentice putimama;tell putimama recruit irolcb;alias ln learn $* from putimama for 1</send>
+  </alias>
+  <alias
+   match="exa"
+   enabled="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>ex3;ex4;ex1;ex2</send>
+  </alias>
+  <alias
+   match="exh"
+   enabled="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>exa;h;enforce 10</send>
+  </alias>
+  <alias
+   match="exx"
+   enabled="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>ex1;ex2;ex1;ex2</send>
+  </alias>
+  <alias
+   match="g1"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>--¦Û°Ê¤Æ
+require "wait"
+wait.make (function ()
+
+ wait.time (2) 
+ Execute("!wf;s;s;s;ride 6")
+ wait.time (5) 
+ Execute("c1;e;rem 3")
+ wait.time (5) 
+ Execute("w;s;w;rem 5")
+ wait.time (5) 
+ Execute("recall;e;s;s;w;w;n;open door;enter")
+ wait.time (5) 
+ Execute("w;w;w;w;w;s;s;w;w;w;rem 2")
+ wait.time (5) 
+end)</send>
+  </alias>
+  <alias
+   match="gb1"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>--rem 3»k¤é«°
+require "wait"
+wait.make (function ()
+
+ Execute("e;e;tran 4")
+ wait.time (5) 
+ Execute("s;e;e;e;e;e")
+ wait.time (5) 
+ Execute("n;n;ne;e;e")
+ wait.time (7) 
+
+
+end)</send>
+  </alias>
+  <alias
+   match="gb2"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>--rem2 ¹C«L¤s²ø
+require "wait"
+wait.make (function ()  
+
+ Execute("e;e;tran 1")
+ wait.time(5)
+ Execute("w;w;w;sw;sw;w;s")
+ wait.time(5)
+ Execute("u;u;u;u;enter")
+ wait.time(5)
+ Execute("n;n;n;n;n;n;n;n;n")
+ wait.time(5)
+ Execute("nu;nu;nu;n;n;n")
+ wait.time(5)
+
+
+end) 
+</send>
+  </alias>
+  <alias
+   match="gb3"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>--¨¸²§ªù rem 3
+require "wait"
+wait.make (function ()  
+
+ Execute("e;e;tran 1")
+ wait.time(5)
+ Execute("w;w;w;sw;sw")
+ wait.time(5)
+ Execute("w;w;w;w;w;nw;nw")
+ wait.time(5)
+ Execute("w;n;enter;n")
+ wait.time(5)
+end) </send>
+  </alias>
+  <alias
+   match="gb4"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>--¨ªºXªZ³õ (¤é¤ë) 
+require "wait"
+wait.make (function ()  
+
+ Execute("e;e;tran 5")
+ wait.time(5)
+ Execute("w;w;w;w;nw;nw")
+ wait.time(5)
+ Execute("n;w;w;w;w;s")
+ wait.time(5)
+
+
+end) </send>
+  </alias>
+  <alias
+   match="gm1"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>require "wait"
+wait.make (function ()  
+
+ Execute("e;e;tran 10")
+ wait.time(5)
+ Execute("e;s;s;s;s;s;s;sw")
+ wait.time(5)
+ Execute("w;w;sw;nw;w;w;s;sw")
+ wait.time(5)
+ Execute("w;sw;s;s;s;open door;s")
+ wait.time(5)
+ Execute("sw;w;w;s;s;e;s;s;e;e")
+ wait.time(5)
+ Execute("ne;n;w")
+
+end) </send>
+  </alias>
+  <alias
+   match="gm2"
+   enabled="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>require "wait"
+wait.make (function ()  
+
+ Execute("e;e;tran 2")
+ wait.time(5)
+ Execute("w;n;nw;ne;n")
+ wait.time(5)
+ Execute("u;u;n;eu;n;n")
+ wait.time(5)
+ Execute("e;n;e;e;n;n;n")
+ wait.time(5)
+ Execute("enter;n")
+ wait.time(5)
+
+end) </send>
+  </alias>
+</aliases>
+
+<!-- timers -->
+
+<timers
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+  <timer second="40.00" offset_second="0.00"    send_to="12"
+group="PRACTICE" >
+  <send>DoAfterSpecial(1, "move 5;p1 5;exa;ex1;ex2;bath;ladle", sendto.execute)
+DoAfterSpecial(11, "move 1;ln force;exa;ex1;ex2;ex;ex2", sendto.execute)
+DoAfterSpecial(21, "move 2;k king;sac all;move 5", sendto.execute)</send>
+
+  </timer>
+  <timer second="6.00" offset_second="0.00"    send_to="10"
+>
+  <send>p1 8;exa</send>
+
+  </timer>
+  <timer enabled="y" minute="2" second="0.00" offset_second="0.00"    send_to="10"
+group="Normal" >
+  <send>ex1;ex2</send>
+
+  </timer>
+  <timer second="20.00" offset_second="0.00"    send_to="10"
+group="Force" >
+  <send>stop;exa;skills</send>
+
+  </timer>
+  <timer name="PER_BLADE" second="6.00" offset_second="0.00"    send_to="12"
+>
+  <send>Execute("")</send>
+
+  </timer>
+</timers>
+
+<!-- macros -->
+
+<macros
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+
+  <macro name="up" type="send_now" >
+  <send>up</send>
+
+  </macro>
+
+  <macro name="down" type="send_now" >
+  <send>down</send>
+
+  </macro>
+
+  <macro name="north" type="send_now" >
+  <send>north</send>
+
+  </macro>
+
+  <macro name="south" type="send_now" >
+  <send>south</send>
+
+  </macro>
+
+  <macro name="east" type="send_now" >
+  <send>east</send>
+
+  </macro>
+
+  <macro name="west" type="send_now" >
+  <send>west</send>
+
+  </macro>
+
+  <macro name="examine" type="replace" >
+  <send>examine </send>
+
+  </macro>
+
+  <macro name="look" type="replace" >
+  <send>look </send>
+
+  </macro>
+
+  <macro name="page" type="replace" >
+  <send>page </send>
+
+  </macro>
+
+  <macro name="say" type="replace" >
+  <send>say </send>
+
+  </macro>
+
+  <macro name="whisper" type="replace" >
+  <send>whisper </send>
+
+  </macro>
+
+  <macro name="doing" type="send_now" >
+  <send>DOING</send>
+
+  </macro>
+
+  <macro name="who" type="send_now" >
+  <send>WHO</send>
+
+  </macro>
+
+  <macro name="drop" type="replace" >
+  <send>drop </send>
+
+  </macro>
+
+  <macro name="take" type="replace" >
+  <send>take </send>
+
+  </macro>
+
+  <macro name="logout" type="send_now" >
+  <send>LOGOUT</send>
+
+  </macro>
+
+  <macro name="quit" type="send_now" >
+  <send>QUIT</send>
+
+  </macro>
+</macros>
+
+<!-- variables -->
+
+<variables
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+  <variable name="EXP_STUDY">10</variable>
+  <variable name="IS_ACT_EXP"></variable>
+  <variable name="VDOLL">¦³</variable>
+  <variable name="VGOMOB_LOCK"></variable>
+  <variable name="VKILL_LOCK"></variable>
+  <variable name="VKill">-8</variable>
+  <variable name="VLOCK"></variable>
+  <variable name="VMOB_NAME"></variable>
+  <variable name="VOCCPY">0</variable>
+  <variable name="VPATH">7</variable>
+  <variable name="VRUN_OUT"></variable>
+  <variable name="VSTATUS">MOB</variable>
+</variables>
+
+<!-- colours -->
+
+<colours
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+
+<ansi>
+
+ <normal>
+   <colour seq="1" rgb="black" />
+   <colour seq="2" rgb="maroon" />
+   <colour seq="3" rgb="green" />
+   <colour seq="4" rgb="olive" />
+   <colour seq="5" rgb="navy" />
+   <colour seq="6" rgb="purple" />
+   <colour seq="7" rgb="teal" />
+   <colour seq="8" rgb="silver" />
+
+ </normal>
+
+ <bold>
+   <colour seq="1" rgb="gray" />
+   <colour seq="2" rgb="red" />
+   <colour seq="3" rgb="lime" />
+   <colour seq="4" rgb="yellow" />
+   <colour seq="5" rgb="blue" />
+   <colour seq="6" rgb="magenta" />
+   <colour seq="7" rgb="cyan" />
+   <colour seq="8" rgb="white" />
+
+ </bold>
+
+</ansi>
+
+<custom>
+  <colour seq="1" name="Custom1" text="#FF8080" back="black" />
+  <colour seq="2" name="Custom2" text="#FFFF80" back="black" />
+  <colour seq="3" name="Custom3" text="#80FF80" back="black" />
+  <colour seq="4" name="Custom4" text="#80FFFF" back="black" />
+  <colour seq="5" name="Custom5" text="#0080FF" back="black" />
+  <colour seq="6" name="Custom6" text="#FF80C0" back="black" />
+  <colour seq="7" name="Custom7" text="red" back="black" />
+  <colour seq="8" name="Custom8" text="#0080C0" back="black" />
+  <colour seq="9" name="Custom9" text="magenta" back="black" />
+  <colour seq="10" name="Custom10" text="#804040" back="black" />
+  <colour seq="11" name="Custom11" text="#FF8040" back="black" />
+  <colour seq="12" name="Custom12" text="teal" back="black" />
+  <colour seq="13" name="Custom13" text="#004080" back="black" />
+  <colour seq="14" name="Custom14" text="#FF0080" back="black" />
+  <colour seq="15" name="Custom15" text="green" back="black" />
+  <colour seq="16" name="Custom16" text="blue" back="black" />
+
+</custom>
+</colours>
+
+<!-- keypad -->
+
+<keypad
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+
+  <key name="0" >
+  <send>look</send>
+  </key>
+
+  <key name="1" >
+  <send>sw</send>
+  </key>
+
+  <key name="2" >
+  <send>south</send>
+  </key>
+
+  <key name="3" >
+  <send>se</send>
+  </key>
+
+  <key name="4" >
+  <send>west</send>
+  </key>
+
+  <key name="5" >
+  <send>WHO</send>
+  </key>
+
+  <key name="6" >
+  <send>east</send>
+  </key>
+
+  <key name="7" >
+  <send>nw</send>
+  </key>
+
+  <key name="8" >
+  <send>north</send>
+  </key>
+
+  <key name="9" >
+  <send>ne</send>
+  </key>
+
+  <key name="." >
+  <send>hide</send>
+  </key>
+
+  <key name="/" >
+  <send>inventory</send>
+  </key>
+
+  <key name="*" >
+  <send>score</send>
+  </key>
+
+  <key name="-" >
+  <send>up</send>
+  </key>
+
+  <key name="+" >
+  <send>down</send>
+  </key>
+
+  <key name="Ctrl+0" >
+  </key>
+
+  <key name="Ctrl+1" >
+  </key>
+
+  <key name="Ctrl+2" >
+  </key>
+
+  <key name="Ctrl+3" >
+  </key>
+
+  <key name="Ctrl+4" >
+  </key>
+
+  <key name="Ctrl+5" >
+  </key>
+
+  <key name="Ctrl+6" >
+  </key>
+
+  <key name="Ctrl+7" >
+  </key>
+
+  <key name="Ctrl+8" >
+  </key>
+
+  <key name="Ctrl+9" >
+  </key>
+
+  <key name="Ctrl+." >
+  </key>
+
+  <key name="Ctrl+/" >
+  </key>
+
+  <key name="Ctrl+*" >
+  </key>
+
+  <key name="Ctrl+-" >
+  </key>
+
+  <key name="Ctrl++" >
+  </key>
+</keypad>
+
+<!-- printing -->
+
+<printing
+   muclient_version="5.06"
+   world_file_version="15"
+   date_saved="2023-02-09 17:36:10"
+  >
+
+<ansi>
+
+ <normal>
+
+ </normal>
+
+ <bold>
+   <style seq="1" bold="y" />
+   <style seq="2" bold="y" />
+   <style seq="3" bold="y" />
+   <style seq="4" bold="y" />
+   <style seq="5" bold="y" />
+   <style seq="6" bold="y" />
+   <style seq="7" bold="y" />
+   <style seq="8" bold="y" />
+
+ </bold>
+
+</ansi>
+</printing>
+
+<!-- plugins -->
+<include name="Reconnecter.xml" plugin="y" />
+<include name="Reconnecter_Lua.xml" plugin="y" />
+</muclient>
